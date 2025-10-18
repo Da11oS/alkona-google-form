@@ -23,7 +23,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Используйте версию Node.js, подходящую для вашего проекта
+          node-version: "22.13.1" # Используйте версию Node.js, подходящую для вашего проекта
 
       # Шаг 3: Установка pnpm
       - name: Install pnpm
