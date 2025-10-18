@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 const ASSET_URL = process.env.ASSET_URL || '';
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/alkona-google-form/',
+  base: '/alkona-google-form',
   build: {
     minify: false,
   },
