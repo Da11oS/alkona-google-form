@@ -7,6 +7,11 @@ on:
       - main
       - master
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
   # Также можно запускать вручную через GitHub UI
   workflow_dispatch:
 
@@ -69,7 +74,6 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           # Upload dist folder
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Токен для доступа к GitHub Pages
           path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
