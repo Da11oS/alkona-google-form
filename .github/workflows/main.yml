@@ -7,13 +7,8 @@ on:
       - main
       - master
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
   # Также можно запускать вручную через GitHub UI
-  workflow_dispatch:
+  # workflow_dispatch:
 
 # jobs:
 #   deploy:
@@ -48,6 +43,10 @@ permissions:
 #         with:
 #           github_token: ${{ secrets.GITHUB_TOKEN }} # Токен для доступа к GitHub Pages
 #           publish_dir: ./dist # Путь к папке с собранным проектом (обычно dist)
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   # Single deploy job since we're just deploying
   deploy:
