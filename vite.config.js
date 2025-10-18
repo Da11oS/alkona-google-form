@@ -6,7 +6,7 @@ const ASSET_URL = process.env.ASSET_URL || '';
 export default defineConfig({
   base: '/alkona-google-form/',
   build: {
-    minify: flase,
+    minify: false,
   },
   plugins: [vue(),tailwindcss(),],
 })
