@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages with pnpm
 
 on:
   # Запускать действие при push в ветку main или master
@@ -23,17 +23,21 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22' # Используйте версию Node.js, подходящую для вашего проекта
+          node-version: "18" # Используйте версию Node.js, подходящую для вашего проекта
 
-      # Шаг 3: Установка зависимостей
+      # Шаг 3: Установка pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Шаг 4: Установка зависимостей с помощью pnpm
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
-      # Шаг 4: Сборка проекта
+      # Шаг 5: Сборка проекта с помощью pnpm
       - name: Build project
-        run: npm run build
+        run: pnpm run build
 
-      # Шаг 5: Развертывание на GitHub Pages
+      # Шаг 6: Развертывание на GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
