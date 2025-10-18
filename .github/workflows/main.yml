@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Запускать действие при push в ветку main или master
+  push:
+    branches:
+      - main
+      - master
+
+  # Также можно запускать вручную через GitHub UI
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Шаг 1: Проверка кода из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Шаг 2: Настройка Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22' # Используйте версию Node.js, подходящую для вашего проекта
+
+      # Шаг 3: Установка зависимостей
+      - name: Install dependencies
+        run: npm install
+
+      # Шаг 4: Сборка проекта
+      - name: Build project
+        run: npm run build
+
+      # Шаг 5: Развертывание на GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Токен для доступа к GitHub Pages
+          publish_dir: ./dist # Путь к папке с собранным проектом (обычно dist)
